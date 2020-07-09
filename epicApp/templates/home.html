@@ -9,7 +9,7 @@
                 <a href="{% url 'update_post' post.pk %}">Edit</a><br>
                 <a href="{% url 'delete_post' post.pk %}">Delete</a>
                 {% endif %}
-                {{ post.body|slice:':200' }}
+                {{ post.body|slice:':200'|safe }}
                 <hr>
             </li>
 

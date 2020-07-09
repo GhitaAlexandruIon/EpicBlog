@@ -15,7 +15,7 @@
     <br>
     <hr>
     <hr>
-    <pre>{{ post.body }}</pre>
+    <p>{{ post.body|safe }}</p>
 
     <a class="btn btn-secondary" href="{% url 'home' %}">Back</a>
 {% endblock %}
