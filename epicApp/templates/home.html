@@ -5,11 +5,12 @@
             <li><a href="{% url 'detail' post.pk %}">{{ post.title }}</a>
                 {{ post.author.first_name }}
                 {{ post.author.last_name }}
+                {% if user.is_authenticated %}
                 <a href="{% url 'update_post' post.pk %}">Edit</a><br>
                 <a href="{% url 'delete_post' post.pk %}">Delete</a>
-                {{ post.body }}
+                {% endif %}
+                {{ post.body|slice:':200' }}
                 <hr>
-
             </li>
 
         {% endfor %}
