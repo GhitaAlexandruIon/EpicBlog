@@ -12,6 +12,10 @@
                 <button class="btn btn-secondary">Post</button>
             </form>
         </div>
+        <script>
+            let name = {{ user.id }};
+            document.getElementById("user").value = name;
+        </script>
     {% else %}
         <h1>You're not allowed here! (and you know it...)</h1>
     {% endif %}
