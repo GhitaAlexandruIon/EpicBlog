@@ -8,10 +8,10 @@
     <small>By: {{ post.author.last_name }}</small>
     {{ post.post_date }}
     {% if user.is_authenticated %}
-        {% if user.id == post.author.id%}
+        {% if user.id == post.author.id %}
             <a href="{% url 'update_post' post.pk %}">Edit</a><br>
             <a href="{% url 'delete_post' post.pk %}">Delete</a>
-            {% endif %}
+        {% endif %}
     {% endif %}
     <br>
     <br>
@@ -26,7 +26,16 @@
     <br>
     <form action="{% url 'like_post' post.pk %}" method="POST">
 
-    {% csrf_token %}
-    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">Like</button> - {{ total_likes }}
+        {% csrf_token %}
+    {% if user.is_authenticated %}
+        {% if liked %}
+        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">UnLike</button>
+        {% else %}
+        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">Like</button>
+        {% endif %}
+        - {{ total_likes }}
+    {% else %}
+        <h1>Must be logged in to like a post</h1>
+    {% endif %}
     </form>
 {% endblock %}
