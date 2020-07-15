@@ -48,6 +48,9 @@ class Profile(models.Model):
     facebook = models.CharField(max_length=255, null=True, blank=True)
     instagram = models.CharField(max_length=255, null=True, blank=True)
 
-
     def __str__(self):
         return str(self.user)
+
+    def get_absolute_url(self):
+        # return reverse('detail', args=(str(self.id)))
+        return reverse('home')

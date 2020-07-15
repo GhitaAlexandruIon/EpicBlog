@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django import forms
+from epicApp.models import Profile
 
 
 class SignUpForm(UserCreationForm):
@@ -45,3 +46,18 @@ class PasswordChangingForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ('old_password', 'new_password1', 'new_password2')
+
+
+class ProfilePageForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('bio', 'profile_pic', 'website', 'github', 'linkedin', 'facebook', 'instagram')
+        widgets = {
+                'bio': forms.Textarea(attrs={'class': 'form-control'}),
+                # 'profile_pic': forms.TextInput(attrs={'class': 'form-control'}),
+                'website': forms.TextInput(attrs={'class': 'form-control'}),
+                'github': forms.TextInput(attrs={'class': 'form-control'}),
+                'linkedin': forms.TextInput(attrs={'class': 'form-control'}),
+                'facebook': forms.TextInput(attrs={'class': 'form-control'}),
+                'instagram': forms.TextInput(attrs={'class': 'form-control'}),
+        }
