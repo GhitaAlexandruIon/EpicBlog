@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
     {{ post.title_tag }}
 {% endblock %}
@@ -30,15 +31,55 @@
     <form action="{% url 'like_post' post.pk %}" method="POST">
 
         {% csrf_token %}
-    {% if user.is_authenticated %}
-        {% if liked %}
-        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">UnLike</button>
+        {% if user.is_authenticated %}
+            {% if liked %}
+                <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">UnLike</button>
+            {% else %}
+                <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">Like</button>
+            {% endif %}
+            - {{ total_likes }}
         {% else %}
-        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">Like</button>
+            <h1>Must be logged in to like a post</h1>
         {% endif %}
-        - {{ total_likes }}
-    {% else %}
-        <h1>Must be logged in to like a post</h1>
-    {% endif %}
     </form>
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-md-2">
+                {% if post.author.profile.profile_pic %}
+                    <img src="{{ post.author.profile.profile_pic.url }}" class="card-img" alt="...">
+
+                {% else %}
+                    <img src="{% static 'epicapp/images/default.png' %}" class="card-img" alt="...">
+                {% endif %}
+
+            </div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5>
+                    <p class="small text-muted">
+                        <a href="{% url 'show_profile'  post.author.profile.id %}">Profile page</a>
+                        {% if  post.author.profile.website %}
+                            <a href="{{ post.author.profile.website }}" target="_blank">Website |</a>
+                        {% endif %}
+                        {% if post.author.profile.github %}
+                            <a href="{{ post.author.profile.github }}" target="_blank">Github |</a>
+                        {% endif %}
+                        {% if post.author.profile.linkedin %}
+                            <a href="{{ post.author.profile.linkedin }}" target="_blank">LinkedIn |</a>
+                        {% endif %}
+                        {% if post.author.profile.instagram %}
+                            <a href="{{ post.author.profile.instagram }}" target="_blank">Instagram |</a>
+                        {% endif %}
+                        {% if post.author.profile.facebook %}
+                            <a href="{{ post.author.profile.facebook }}" target="_blank">Facebook |</a>
+                        {% endif %}
+                    </p>
+                    <p class="card-text"> {{ post.author.profile.bio }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 {% endblock %}
