@@ -2,7 +2,7 @@
 {% block content %}
     <ul>
         {% for post in object_list %}
-            <li><a href="{% url 'detail' post.pk %}">{{ post.title }}</a>
+            <li><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
                 <a href="{% url 'category' post.category %}">{{ post.category }}</a>
                 {{ post.author.first_name }}
                 {{ post.author.last_name }}
@@ -10,11 +10,13 @@
                     {% if user.id == post.author.id %}
                         <a href="{% url 'update_post' post.pk %}">Edit</a><br>
                         <a href="{% url 'delete_post' post.pk %}">Delete</a>
-                        {% endif %}
+                    {% endif %}
                 {% endif %}
                 {{ post.snippet }}
+                <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.approved_comments.count }}</a>
                 <hr>
             </li>
+
 
         {% endfor %}
     </ul>
