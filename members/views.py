@@ -58,5 +58,5 @@ class CreateProfilePageView(CreateView):
     # fields = '__all__'
 
     def form_valid(self, form):
-        form.instace.user = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
