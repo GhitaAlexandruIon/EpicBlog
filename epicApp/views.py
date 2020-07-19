@@ -7,8 +7,6 @@ from .forms import PostForm, CommentForm
 from .models import Post, Category, Comment
 
 
-# def home(request):
-#     return render(request, 'home.html', {})
 class HomeView(ListView):
     model = Post
     cats = Category.objects.all()
@@ -28,7 +26,7 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
-        context = super(PostDetailView, self).get_context_data(*args, **kwargs)
+        context = super(PostDetailView, self).get_context_data(**kwargs)
         votes = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = votes.total_likes()
         liked = False
@@ -44,7 +42,6 @@ class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
-    # fields = '__all__'
 
 
 class AddCategoryView(CreateView):
