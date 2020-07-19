@@ -131,6 +131,7 @@ dmypy.json
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea
 
 # Generated files
 .idea/**/contentModel.xml
@@ -629,4 +630,4 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# End of https://www.gitignore.io/api/django,python,pycharm,windows,visualstudio
+# End of https://www.gitignore.io/api/django,python,pycharm,windows,visualstudio'.idea' 
