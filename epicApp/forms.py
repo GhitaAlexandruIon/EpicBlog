@@ -8,6 +8,18 @@ for item in choices:
     choice_list.append(item)
 
 
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ('name', 'body')
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -21,10 +33,3 @@ class PostForm(forms.ModelForm):
             'body': forms.Textarea(attrs={'class': 'form-control'}),
             'snippet': forms.Textarea(attrs={'class': 'form-control'}),
         }
-
-
-class CommentForm(forms.ModelForm):
-
-    class Meta:
-        model = Comment
-        fields = ('name', 'body')

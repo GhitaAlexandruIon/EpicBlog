@@ -34,24 +34,28 @@
             <h1>Must be logged in to like a post</h1>
         {% endif %}
     </form>
-    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-    {% for comment in post.comments.all %}
-        {% if user.is_authenticated or comment.approved_comment %}
-            <div class="comment">
-                <div class="date">
-                    {{ comment.date_added }}
-                    {% if not comment.approved_comment %}
-                        <a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}">remove</a>
-                        <a class="btn btn-primary" href="{% url 'comment_approve' pk=comment.pk %}">approve</a>
-                    {% endif %}
-                </div>
-                <strong>{{ comment.name }}</strong>
-                <p>{{ comment.body|linebreaks }}</p>
-            </div>
-        {% endif %}
-    {% empty %}
-        <p>No comments here yet :(</p>
-    {% endfor %}
+    {#    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>#}
+    {#    {% for comment in post.comments.all %}#}
+    {#        {% if user.is_authenticated or comment.approved_comment %}#}
+    {#            <div class="comment">#}
+    {#                <div class="date">#}
+    {#                    {{ comment.date_added }}#}
+    {#                    {% if not comment.approved_comment %}#}
+    {#                        <a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}">remove</a>#}
+    {#                        <a class="btn btn-primary" href="{% url 'comment_approve' pk=comment.pk %}">approve</a>#}
+    {#                    {% endif %}#}
+    {#                </div>#}
+    {#                <strong>{{ comment.name }}</strong>#}
+    {#                <p>{{ comment.body|linebreaks }}</p>#}
+    {#            </div>#}
+    {#        {% endif %}#}
+    {#    {% empty %}#}
+    {#        <p>No comments here yet :(</p>#}
+    {#    {% endfor %}#}
+
+
+
+    {#    PROFILE#}
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-2">
@@ -87,4 +91,27 @@
             </div>
         </div>
     </div>
+
+    {#    COMMENTS#}
+<h2>Comments...</h2>
+{% if not post.comments.all %}
+    <h3>No comments yet
+        <a href="{% url 'add_comment' post.pk %}">Add comment</a>
+>
+{% else %}
+<a href="{% url 'add_comment' post.pk %}">Add comment</a>
+    {% for comment in post.comments.all %}
+        {{ comment.name }}
+        {{ comment.date_added }}
+        <br>
+        {{ comment.body }}
+
+    {% endfor %}
+    <a href="{% url 'add_comment' post.pk %}">Add comment</a>
+
+{% endif %}
+
 {% endblock %}
+
+
+
