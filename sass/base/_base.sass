@@ -2,8 +2,11 @@
   box-sizing: border-box
 body
   background-image: url("/static/epicapp/images/body.jpg")
-  background-repeat: no-repeat
+  min-height: 500px
   background-attachment: fixed
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
 ul li
   list-style: none
 .post_title
@@ -52,3 +55,22 @@ ul li
   font-weight: bolder
 #posts
   margin-right: 2em
+
+.pagination
+  margin-left: 34em
+  margin-bottom: 1em
+
+.pagination a
+  color: black
+  padding: 8px 16px
+  text-decoration: none
+  transition: background-color .3s
+
+/* Style the active/current link */
+.pagination a.active
+  background-color: dodgerblue
+  color: white
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active)
+  background: #fff0ff
