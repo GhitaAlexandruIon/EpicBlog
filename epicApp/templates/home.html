@@ -1,21 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+
+
+    <div class="jumbotron jumbotron-fluid" id="headerHome">
+        <div class="container text-center">
+            <h1 class="display-4">Epic Blog</h1>
+            <p class="lead">Epic posts are well welcomed...</p>
+        </div>
+    </div>
+
     <ul>
         {% for post in object_list %}
-            <li><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
-                <a href="{% url 'category' post.category %}">{{ post.category }}</a>
-                {{ post.author.first_name }}
-                {{ post.author.last_name }}
-                {% if user.is_authenticated %}
-                    {% if user.id == post.author.id %}
-                        <a href="{% url 'update_post' post.pk %}">Edit</a><br>
-                        <a href="{% url 'delete_post' post.pk %}">Delete</a>
-                    {% endif %}
-                {% endif %}
-                {{ post.snippet }}
-{#                <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.approved_comments.count }}</a>#}
-                <hr>
-            </li>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <li><h1 class="display-4">
+                        <a class="post_title" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+
+                    </h1>
+                        <h2 class="display-6">{{ post.author.first_name }}-{{ post.author.last_name }}
+                            <a class="category" href="{% url 'category' post.category %}">{{ post.category }}</a></h2>
+                        <p class="lead">{{ post.snippet }}</p>
+                        <hr class="hr-text" data-content="{{ post.category }}">
+
+                        {% if user.is_authenticated %}
+                            {% if user.id == post.author.id %}
+                                <a class="btn btn-sm btn-info editButton" href="{% url 'update_post' post.pk %}">Edit</a>
+                                <a class="btn btn-sm btn-danger deleteButton" href="{% url 'delete_post' post.pk %}">Delete</a>
+                            {% endif %}
+                        {% endif %}
+
+                        <a class="btn btn-sm btn-primary commentButton" href="{% url 'post_detail' pk=post.pk %}">Comments:
+                            <span class="badge badge-light">{{ post.comments.count }}</span> </a>
+                    </li>
+                </div>
+            </div>
         {% endfor %}
     </ul>
+
 {% endblock %}

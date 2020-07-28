@@ -3,15 +3,17 @@
     Add Category
 {% endblock %}
 {% block content %}
-    {% if user.is_authenticated %}
-        <div class="form-group">
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="btn btn-secondary">Add Category</button>
-            </form>
-        </div>
-    {% else %}
-        <h1>You're not allowed here! (and you know it...)</h1>
-    {% endif %}
+    <div class="jumbotron">
+        {% if user.is_authenticated %}
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-secondary btn-lg">Add Category</button>
+                </form>
+            </div>
+        {% else %}
+            <h1>You're not allowed here! (and you know it...)</h1>
+        {% endif %}
+    </div>
 {% endblock %}
