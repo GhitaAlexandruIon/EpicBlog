@@ -25,7 +25,8 @@
 
                         {% if user.is_authenticated %}
                             {% if user.id == post.author.id %}
-                                <a class="btn btn-sm btn-info editButton" href="{% url 'update_post' post.pk %}">Edit</a>
+                                <a class="btn btn-sm btn-info editButton"
+                                   href="{% url 'update_post' post.pk %}">Edit</a>
                                 <a class="btn btn-sm btn-danger deleteButton" href="{% url 'delete_post' post.pk %}">Delete</a>
                             {% endif %}
                         {% endif %}
@@ -37,5 +38,5 @@
             </div>
         {% endfor %}
     </ul>
-
+    {% include 'pagination.html' %}
 {% endblock %}
