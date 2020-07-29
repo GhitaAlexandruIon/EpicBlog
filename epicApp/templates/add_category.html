@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block title %}
     Add Category
 {% endblock %}
 {% block content %}
-    <div class="jumbotron">
+        <div class="jumbotron jumbotron-fluid" id="headerBlog">
+        <div class="container text-center">
+            <h1 class="display-4">Add your own categories: {{ user.first_name }} {{ user.last_name }}!</h1>
+        </div>
+    </div>
+
+    <div class="jumbotron ">
         {% if user.is_authenticated %}
-            <div class="form-group">
+            <div class="form-group addCateoryForm">
                 <form method="POST">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% bootstrap_form form %}
+{#                    {{ form.as_p }}#}
                     <button class="btn btn-secondary btn-lg">Add Category</button>
                 </form>
             </div>

@@ -4,7 +4,7 @@
     {% if category_posts %}
         <ul>
             {% for post in category_posts %}
-                <div class="jumbotron jumbotron-fluid" id="posts">
+                <div class="jumbotron jumbotron-fluid" id="posts" style="color: black">
                     <div class="container">
                         <li><h1 class="display-4">
                             <a class="post_title" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>

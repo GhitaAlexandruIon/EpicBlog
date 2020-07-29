@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # instaled apps
     'ckeditor',
+    'bootstrap4',
     # my apps
     'epicApp',
     'members',

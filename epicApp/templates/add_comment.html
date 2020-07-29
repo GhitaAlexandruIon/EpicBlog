@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block title %}
     Add a Comment
 {% endblock %}
 
 {% block content %}
+     <div class="jumbotron jumbotron-fluid" id="headerBlog"  style="margin-top: 5px">
+        <div class="container text-center">
+            <h1 class="display-4">Add a comment!</h1>
 
-        <div class="form-group">
+        </div>
+     </div>
+    <div class="container">
+    <div class="jumbotron commentForm">
+        <div class="form-group ">
             <form method="POST">
                 {% csrf_token %}
-
-                {{ form.as_p }}
+                {% bootstrap_form form %}
                 <button class="btn btn-secondary">Post</button>
             </form>
         </div>
+        </div>
+    </div>
 {% endblock %}

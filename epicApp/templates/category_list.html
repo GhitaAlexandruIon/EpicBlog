@@ -3,8 +3,18 @@
     Blog Categories
 {% endblock %}
 {% block content %}
-    <h1>Blog Categories</h1>
+     <div class="jumbotron jumbotron-fluid" id="headerBlog">
+        <div class="container text-center">
+            <h1 class="display-4">List of all Categories</h1>
+        </div>
+    </div>
+    <div class="container">
+    <div class="row">
     {% for item in cat_menu_list %}
-        <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
+        <div class="col-sm-2">
+        <a class="btn btn-success" href="{% url 'category' item %}">{{ item }}</a>
+        </div>
     {% endfor %}
+    </div>
+    </div>
 {% endblock %}
