@@ -1,9 +1,8 @@
 from django import forms
-from .models import Post, Category, Comment
+from epicApp.models import Post, Category, Comment
 
 choices = Category.objects.all().values_list('name', 'name')
 choice_list = []
-
 for item in choices:
     choice_list.append(item)
 
