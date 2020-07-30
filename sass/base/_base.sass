@@ -46,7 +46,9 @@ ul li
   margin-left: 50px
 
 #headerBlog
-  background-color: #5577ad
+  background-image: url("/static/epicapp/images/headerblog.jpg")
+  background-repeat: no-repeat
+  background-size: cover
   color: white
   font-weight: bolder
 #posts
@@ -80,9 +82,28 @@ ul li
   width: 30%
   height: 50%
   margin: auto
-.commentForm
+.commentForm, .loginForm, .changePasswordForm
+  width: 30%
+  height: 30%
+  margin: auto
+.registerForm, .profileSettingsForm, .createProfilePageForm, .editProfilePageForm
   width: 50%
   height: 50%
   margin: auto
-
-
+.loginFormContainer
+  background-image: url("/static/epicapp/images/loginbackground.jpg")
+.registerFormContainer
+  background-image: url("/static/epicapp/images/registrationbackground.jpg")
+.profileSettingsFormContainer
+  background-image: url("/static/epicapp/images/profilesettings.jpg")
+.changePasswordFormContainer
+  background-image: url("/static/epicapp/images/changepassword.jpg")
+.createProfilePageFormContainer, .editProfilePageFormContainer
+  background-image: url("/static/epicapp/images/createprofilepage.jpg")
+.userProfileContainer
+  background-image: url("/static/epicapp/images/profilepage.jpg")
+.loginFormContainer, .registerFormContainer, .profileSettingsFormContainer, .changePasswordFormContainer,
+.createProfilePageFormContainer, .editProfilePageFormContainer, .userProfileContainer
+  background-repeat: no-repeat
+  background-size: cover
+  margin-top: 50px

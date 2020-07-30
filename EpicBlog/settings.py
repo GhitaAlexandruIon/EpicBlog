@@ -25,7 +25,7 @@ SECRET_KEY = '9waf0^gmlcw%^^5@%o*1vbl1l)wtgmq9e8$-nt5(^2)fmurt6p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['epicblog.pythonanywhere.com']
 
 
 # Application definition
