@@ -12,7 +12,7 @@
 
     <ul>
         {% for post in object_list %}
-            <div class="jumbotron jumbotron-fluid" id="posts">
+            <div class="jumbotron jumbotron-fluid" id="posts" style="background-image: linear-gradient(#f9fdff, rgba(21,19,26,0.95))">
                 <div class="container">
                     <li><h1 class="display-4">
                         <a class="post_title" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
