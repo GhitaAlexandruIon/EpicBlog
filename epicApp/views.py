@@ -1,9 +1,9 @@
+from epicApp.forms import PostForm, CommentForm
+from epicApp.models import Post, Category, Comment
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.http import HttpResponseRedirect
-from epicApp.forms import PostForm, CommentForm
-from epicApp.models import Post, Category, Comment
 
 
 class HomeView(ListView):

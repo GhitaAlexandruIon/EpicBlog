@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, PostDetailView, AddPostView, UpdatePostView, \
+from epicApp.views import HomeView, PostDetailView, AddPostView, UpdatePostView, \
     DeletePostView, AddCategoryView, CategoryView, CategoryListView, LikeView, AddCommentView
 
 urlpatterns = [
