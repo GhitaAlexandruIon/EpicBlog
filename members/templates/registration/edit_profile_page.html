@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block title %}
     Edit Profile
 {% endblock %}
 
 {% block content %}
+    <div class="container jumbotron editProfilePageFormContainer">
     {% if user.is_authenticated %}
         {% if user.id == profile.user.id %}
-            <div class="form-group">
+            <div class="form-group editProfilePageForm">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% bootstrap_form form %}
                     <button class="btn btn-secondary">Update Profile Page</button>
                 </form>
             </div>
         {% endif %}
     {% else %}
-        <h1>You're not allowed here! (and you know it...)</h1>
+        <div class="alert alert-danger" role="alert">
+                <h1 class="display-4">You're not allowed here! (and you know it...)</h1>
+            </div>
     {% endif %}
+    </div>
 {% endblock %}

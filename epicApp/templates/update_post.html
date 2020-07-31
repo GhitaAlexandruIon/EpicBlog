@@ -4,6 +4,13 @@
 {% endblock %}
 
 {% block content %}
+
+     <div class="jumbotron jumbotron-fluid" id="headerBlog">
+        <div class="container text-center">
+            <h4 class="display-4">Edit your post</h4>
+        </div>
+    </div>
+    <div class="container jumbotron" style="background-color: #1b86e5">
     {% if user.is_authenticated %}
         {% if user.id == post.author.id %}
             <div class="form-group">
@@ -18,5 +25,5 @@
         {% else %}
             <h1>You're not allowed here! (and you know it...)</h1>
     {% endif %}
-
+    </div>
 {% endblock %}

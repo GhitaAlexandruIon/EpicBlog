@@ -1,13 +1,11 @@
+from epicApp.forms import PostForm, CommentForm
+from epicApp.models import Post, Category, Comment
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.http import HttpResponseRedirect
-from .forms import PostForm
-from .models import Post, Category
 
 
-# def home(request):
-#     return render(request, 'home.html', {})
 class HomeView(ListView):
     model = Post
     cats = Category.objects.all()
@@ -27,7 +25,7 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
-        context = super(PostDetailView, self).get_context_data(*args, **kwargs)
+        context = super(PostDetailView, self).get_context_data(**kwargs)
         votes = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = votes.total_likes()
         liked = False
@@ -43,7 +41,6 @@ class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
-    # fields = '__all__'
 
 
 class AddCategoryView(CreateView):
@@ -83,4 +80,16 @@ def LikeView(request, pk):
     else:
         post.likes.add(request.user)
         liked = True
-    return HttpResponseRedirect(reverse('detail', args=[str(pk)]))
+    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
+
+
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'add_comment.html'
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
+
+    success_url = reverse_lazy('home')

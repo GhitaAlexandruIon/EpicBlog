@@ -4,13 +4,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Update Pprofile</h1>
-    {{ user.profile.bio }}
-    <div class="form-group">
+    <div class="container jumbotron profileSettingsFormContainer">
+    <h1 class="display-4 text-center">Update Pprofile</h1>
+    <h4 class="display-6 text-center">{{ user.profile.bio }}</h4>
+    <div class="form-group profileSettingsForm">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-secondary">Update</button>
         </form>
+    </div>
     </div>
 {% endblock %}

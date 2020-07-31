@@ -1,0 +1,109 @@
+*
+  box-sizing: border-box
+body
+  color: white
+ul li
+  list-style: none
+.post_title
+  text-transform: capitalize
+.category
+  margin-left: 150px
+.hr-text
+  line-height: 1em
+  position: relative
+  outline: 0
+  border: 0
+  color: black
+  text-align: center
+  height: 1.5em
+  opacity: .5
+  &:before
+    content: ''
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent)
+    position: absolute
+    left: 0
+    top: 50%
+    width: 100%
+    height: 1px
+
+  &:after
+    content: attr(data-content)
+    position: relative
+    display: inline-block
+    color: black
+
+    padding: 0 .5em
+    line-height: 1.5em
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078
+    background-color: #fcfcfa
+
+.commentButton, .editButton, .deleteButton
+  float: right
+  margin-bottom: 0
+  margin-left: 50px
+
+#headerBlog
+  background-image: url("/static/epicapp/images/headerblog.jpg")
+  background-repeat: no-repeat
+  background-size: cover
+  color: white
+  font-weight: bolder
+#posts
+  margin-right: 2em
+
+.pagination
+  margin-left: 34em
+  margin-bottom: 1em
+
+.pagination a
+  color: black
+  padding: 8px 16px
+  text-decoration: none
+  transition: background-color .3s
+
+/* Style the active/current link */
+.pagination a.active
+  background-color: dodgerblue
+  color: white
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active)
+  background: #fff0ff
+
+.addPostForm
+  color: black
+  width: 80%
+  margin: auto
+  background-color: #6fa0ed
+.addCateoryForm
+  width: 30%
+  height: 50%
+  margin: auto
+.commentForm, .loginForm, .changePasswordForm
+  width: 30%
+  height: 30%
+  margin: auto
+.registerForm, .profileSettingsForm, .createProfilePageForm, .editProfilePageForm
+  width: 50%
+  height: 50%
+  margin: auto
+.loginFormContainer
+  background-image: url("/static/epicapp/images/loginbackground.jpg")
+.registerFormContainer
+  background-image: url("/static/epicapp/images/registrationbackground.jpg")
+.profileSettingsFormContainer
+  background-image: url("/static/epicapp/images/profilesettings.jpg")
+.changePasswordFormContainer
+  background-image: url("/static/epicapp/images/changepassword.jpg")
+.createProfilePageFormContainer, .editProfilePageFormContainer
+  background-image: url("/static/epicapp/images/createprofilepage.jpg")
+.userProfileContainer
+  background-image: url("/static/epicapp/images/profilepage.jpg")
+.loginFormContainer, .registerFormContainer, .profileSettingsFormContainer, .changePasswordFormContainer,
+.createProfilePageFormContainer, .editProfilePageFormContainer, .userProfileContainer
+  background-repeat: no-repeat
+  background-size: cover
+  margin-top: 50px
