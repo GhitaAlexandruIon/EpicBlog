@@ -4,11 +4,11 @@
     {{ post.title_tag }}
 {% endblock %}
 {% block content %}
-    <div class="container jumbotron">
-        <h1 class="display-4">{{ post.title }}</h1>
-        <small>By: {{ post.author.first_name }}</small>
-        <small>By: {{ post.author.last_name }}</small>
-        {{ post.post_date }}
+    <div class=" jumbotron detailContainer">
+        <h1 class="display-4 text-primary">{{ post.title }}</h1>
+        <small>By: {{ post.author.first_name }} {{ post.author.last_name }}</small>
+        <small class="text-primary">{{ post.post_date }}</small>
+
         {% if user.is_authenticated %}
             {% if user.id == post.author.id %}
                 <a href="{% url 'update_post' post.pk %}">Edit</a><br>
@@ -17,10 +17,12 @@
         {% endif %}
         <hr>
         {% if post.header_image %}
-            <img src="{{ post.header_image.url }}" alt="">
+            <img class="imageDetail" src="{{ post.header_image.url }}" alt="">
         {% endif %}
-        <p>{{ post.body|safe }}</p>
+        <div class="jumbotron text-dark">
+        <p class="">{{ post.body|safe }}</p>
         <a class="btn btn-secondary" href="{% url 'home' %}">Back</a>
+        </div>
         <hr>
         <form action="{% url 'like_post' post.pk %}" method="POST">
             {% csrf_token %}
@@ -35,6 +37,7 @@
                 <h1>Must be logged in to like a post</h1>
             {% endif %}
         </form>
+        <hr>
 
 
         {#    PROFILE#}
@@ -77,8 +80,8 @@
         {#    COMMENTS#}
         <h2>Comments...</h2>
         {% if not post.comments.all %}
-            <h3>No comments yet</h3>
-            <a href="{% url 'add_comment' post.pk %}">Add comment</a>
+            <h6 class="text-muted">No comments yet</h6>
+            <a class="btn btn-primary" href="{% url 'add_comment' post.pk %}">Add comment</a>
             >
         {% else %}
             <a href="{% url 'add_comment' post.pk %}">Add comment</a>
