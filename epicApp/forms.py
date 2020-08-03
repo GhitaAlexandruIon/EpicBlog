@@ -1,7 +1,6 @@
 from django import forms
 from epicApp.models import Post, Category, Comment
 
-
 try:
     choices = Category.objects.all().values_list('name', 'name')
     choice_list = []
