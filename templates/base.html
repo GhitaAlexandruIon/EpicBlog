@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <title>{% block title %}EpicBlog {% endblock %}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,15 +18,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'epicapp/css/app.css' %}">
 
 
-    <title>{% block title %}EpicBlog {% endblock %}</title>
 </head>
 <body>
 {% include 'navbar.html' %}
 
 
-    {% block content %}
+{% block content %}
 
-    {% endblock %}
+{% endblock %}
 
 {% include 'footer.html' %}
 <!-- Optional JavaScript -->
