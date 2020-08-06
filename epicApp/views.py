@@ -62,17 +62,17 @@ class DeletePostView(DetailView):
     success_url = reverse_lazy('home')
 
 
-def CategoryView(request, cats):
+def category_view(request, cats):
     category_posts = Post.objects.filter(category=cats)
     return render(request, 'categories.html', {'cats': cats.title(), 'category_posts': category_posts})
 
 
-def CategoryListView(request):
+def category_list_view(request):
     cat_menu_list = Category.objects.all()
     return render(request, 'category_list.html', {'cat_menu_list': cat_menu_list})
 
 
-def LikeView(request, pk):
+def like_view(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
     liked = False
     if post.likes.filter(id=request.user.id).exists():
