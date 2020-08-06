@@ -6,6 +6,7 @@ from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True)
+    category_image = models.ImageField(null=True, blank=True, upload_to='images/', default='sassa')
 
     def __str__(self):
         return self.name
@@ -21,9 +22,9 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
-    category = models.CharField(max_length=255, default='coding')
+    category = models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     snippet = models.CharField(max_length=255)
-    likes = models.ManyToManyField(User, related_name='blog_post')
+    likes = models.ManyToManyField(User, related_name='blog_post', null=True, blank=True)
 
     def total_likes(self):
         return self.likes.count()
