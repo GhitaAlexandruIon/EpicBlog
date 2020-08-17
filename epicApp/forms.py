@@ -1,13 +1,13 @@
 from django import forms
 from epicApp.models import Post, Category, Comment
 
-try:
-    choices = Category.objects.all().values_list('name', 'name')
-    choice_list = []
-    for item in choices:
-        choice_list.append(item)
-except Exception as e:
-    print(e)
+# try:
+#     choices = Category.objects.all().values_list('name', 'name')
+#     choice_list = []
+#     for item in choices:
+#         choice_list.append(item)
+# except Exception as e:
+#     print(e)
 
 
 class CommentForm(forms.ModelForm):
