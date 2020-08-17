@@ -394,3 +394,28 @@ footer .copyright {
     font-size: 16px;
     padding: 25px 35px
 }
+
+.pagination {
+    margin-left: 34em;
+    margin-bottom: 1em;
+}
+
+
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+
+/* Style the active/current link */
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {
+    background: #fff0ff;
+}
