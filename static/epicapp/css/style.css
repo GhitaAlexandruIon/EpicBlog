@@ -13,9 +13,11 @@ p {
 p a {
     text-decoration: underline
 }
-h1{
+
+h1 {
     text-transform: uppercase;
 }
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
@@ -420,4 +422,171 @@ footer .copyright {
 /* Add a grey background color on mouse-over */
 .pagination a:hover:not(.active) {
     background: #fff0ff;
+}
+
+
+.profile-card-wrapper {
+    width: 600px;
+    height: 500px;
+    position: relative;
+    margin: auto;
+}
+
+.profile-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 550px;
+    height: 450px;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.profile-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #000;
+    transition: .5s;
+}
+
+.profile-card-image:hover img {
+    opacity: 0.4;
+    transition: .5s;
+}
+
+.profile-card:hover .card-image {
+    transform: translateY(-100px);
+    transition: all .9s;
+}
+
+/**** Social Icons *****/
+
+.social-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    list-style: none;
+}
+
+.social-link {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #fff;
+    font-size: 23px;
+    color: #333;
+    font-weight: bold;
+    margin: 0 6px;
+    transition: .4s;
+    transform: translateY(200px);
+    opacity: 0;
+}
+
+.profile-card:hover .social-icons li a {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.social-icons li .social-link:hover {
+    background: #f5f1f1;
+    transition: .2s;
+}
+
+.fab {
+    color: #131313;
+}
+
+
+.social-icons li a .fab {
+    transition: .8s;
+}
+
+.social-icons li a .fab:hover {
+    transform: rotateY(360deg);
+    color: #175dc3;
+}
+
+
+.profile-card:hover li:nth-child(1) a {
+    transition-delay: 0.1s;
+}
+
+.profile-card:hover li:nth-child(2) a {
+    transition-delay: 0.2s;
+}
+
+.profile-card:hover li:nth-child(3) a {
+    transition-delay: 0.3s;
+}
+
+.profile-card:hover li:nth-child(4) a {
+    transition-delay: 0.4s;
+}
+
+/**** Personal Details ****/
+
+.details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    height: 120px;
+    z-index: 1;
+    padding: 10px;
+}
+
+h2 {
+    margin: 30px 0;
+    padding: 0;
+    text-align: center;
+}
+
+.profile-description {
+    font-size: 1rem;
+    line-height: 2.5rem;
+    color: #333;
+    font-weight: 300;
+}
+
+.profile-title-container {
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    opacity: 0;
+    background: #fff;
+    width: 100%;
+    height: 120px;
+    z-index: 3;
+    padding: 10px;
+    transition: .4s;
+}
+
+.profile-two .social-icons li a {
+    border-radius: 50%;
+}
+
+.profile-card:hover .profile-img--two {
+    transform: rotateY(180deg);
+}
+
+.profile-card:hover .profile-title-container {
+    bottom: 0;
+    left: 0;
+    transition-delay: 0.5s;
+    opacity: 1;
 }
