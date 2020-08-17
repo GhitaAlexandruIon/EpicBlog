@@ -1,4 +1,5 @@
 from django import forms
+from django.db.utils import IntegrityError
 from epicApp.models import Post, Category, Comment
 
 try:
@@ -6,7 +7,7 @@ try:
     choice_list = []
     for item in choices:
         choice_list.append(item)
-except Exception as e:
+except IntegrityError as e:
     print(e)
 
 
