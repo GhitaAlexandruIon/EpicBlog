@@ -1,5 +1,5 @@
 from django import forms
-from django.db.utils import IntegrityError
+from django.db.utils import IntegrityError, ProgrammingError
 from epicApp.models import Post, Category, Comment
 
 try:
@@ -9,6 +9,8 @@ try:
         choice_list.append(item)
 except IntegrityError as e:
     print(e)
+except ProgrammingError as f:
+    print(f)
 
 
 class CommentForm(forms.ModelForm):
