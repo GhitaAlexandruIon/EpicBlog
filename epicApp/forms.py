@@ -1,5 +1,5 @@
 from django import forms
-from django.db.utils import IntegrityError, ProgrammingError
+from django.db.utils import IntegrityError, ProgrammingError, OperationalError
 from epicApp.models import Post, Category, Comment
 
 try:
@@ -11,6 +11,8 @@ except IntegrityError as e:
     print(e)
 except ProgrammingError as f:
     print(f)
+except OperationalError as d:
+    print(d)
 
 
 class CommentForm(forms.ModelForm):
