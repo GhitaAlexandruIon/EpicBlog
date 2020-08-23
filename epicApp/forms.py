@@ -15,7 +15,6 @@ except OperationalError as d:
     print(d)
 
 
-
 class CommentForm(forms.ModelForm):
 
     class Meta:

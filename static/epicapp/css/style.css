@@ -29,7 +29,8 @@ a {
 }
 
 a:focus, a:hover {
-    color: #0085a1
+    color: #0085a1;
+    text-decoration: none;
 }
 
 blockquote {
@@ -218,7 +219,7 @@ header.masthead .page-heading .subheading, header.masthead .site-heading .subhea
 }
 
 @media only screen and (min-width: 768px) {
-    header.masthead .page-heading h1, header.masthead .site-heading h1 {
+    header.masthead .page-heading h1, header.masthead .site-heading h1, .profile-card-wrapper {
         font-size: 80px
     }
 }
@@ -400,8 +401,7 @@ footer .copyright {
 }
 
 .pagination {
-    margin-left: 34em;
-    margin-bottom: 1em;
+    margin: auto;
 }
 
 

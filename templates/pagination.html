@@ -1,4 +1,7 @@
-<div class="pagination">
+<div class="container">
+    <div class="row">
+
+        <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -14,4 +17,7 @@
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
+            </div>
+
+    </div>
 </div>
