@@ -5,21 +5,34 @@
 {% endblock %}
 
 {% block content %}
-     <div class="jumbotron jumbotron-fluid" id="headerBlog"  style="margin-top: 5px">
-        <div class="container text-center">
-            <h1 class="display-4">Add a comment!</h1>
+    <header class="masthead" style="background-image: url(
+            {% block header %}'/static/epicapp/images/comment.jpg') {% endblock %}">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h3 class="display-4">Add a comment!</h3>
+                        <div class="container">
+                            <div class=" commentForm text-left">
+                                <div class="form-group ">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        {% bootstrap_form form %}
+                                        <button class="btn btn-secondary">Post</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
         </div>
-     </div>
-    <div class="container">
-    <div class="jumbotron commentForm">
-        <div class="form-group ">
-            <form method="POST">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <button class="btn btn-secondary">Post</button>
-            </form>
-        </div>
+    </header>
+    <div class="jumbotron jumbotron-fluid" id="headerBlog" style="margin-top: 5px">
+        <div class="container text-center">
+
         </div>
     </div>
 {% endblock %}

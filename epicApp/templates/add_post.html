@@ -4,32 +4,40 @@
 {% endblock %}
 
 {% block content %}
-        <div class="jumbotron jumbotron-fluid" id="headerBlog"  style="margin-top: 5px">
-        <div class="container text-center">
-            <h1 class="display-4">Add your own posts: {{ user.first_name }} {{ user.last_name }}!</h1>
+    <header class="masthead" style="background-image: url(
+            {% block header %}'/static/epicapp/images/slide1.jpg') {% endblock %}">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h3 class="display-4">Add your own posts: {{ user.first_name }} {{ user.last_name }}!</h3>
+                        <div class="container">
+                            <div class=" addPostForm text-left">
+                                {% if user.is_authenticated %}
+                                    <div class="form-group">
+                                        <form method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
 
+                                            {{ form.media }}
+                                            {{ form.as_p }}
+                                            <input type="submit" value="Post" class="btn btn-secondary">
+                                        </form>
+                                    </div>
+                                    <script>
+                                        let name = {{ user.id }};
+                                        document.getElementById("user").value = name;
+                                    </script>
+                                {% else %}
+                                    <h1>You're not allowed here! (and you know it...)</h1>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container">
-    <div class="jumbotron addPostForm">
-    {% if user.is_authenticated %}
-        <div class="form-group">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-
-                {{ form.media }}
-                {{ form.as_p }}
-                <input type="submit" value="Post" class="btn btn-secondary">
-            </form>
-        </div>
-        <script>
-            let name = {{ user.id }};
-            document.getElementById("user").value = name;
-        </script>
-    {% else %}
-        <h1>You're not allowed here! (and you know it...)</h1>
-    {% endif %}
-    </div>
-    </div>
 {% endblock %}

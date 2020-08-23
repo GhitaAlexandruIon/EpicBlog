@@ -3,18 +3,28 @@
     Blog Categories
 {% endblock %}
 {% block content %}
-     <div class="jumbotron jumbotron-fluid" id="headerBlog">
-        <div class="container text-center">
-            <h1 class="display-4">List of all Categories</h1>
-        </div>
-    </div>
-    <div class="container jumbotron">
+     <header class="masthead" style="background-image: url(
+  {% block header %}'/static/epicapp/images/category-list.jpg') {% endblock %}">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h3 class="display-4">List of all Categories</h3>
+              <hr>
+    <div class="container ">
     <div class="row">
     {% for item in cat_menu_list %}
-        <div class="col-sm-2">
+        <div class="col-sm-4 col-md-6">
         <a class="btn btn-success" href="{% url 'category' item %}">{{ item }}</a>
         </div>
     {% endfor %}
     </div>
     </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
 {% endblock %}
