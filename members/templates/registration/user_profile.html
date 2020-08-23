@@ -4,47 +4,58 @@
 
 
 {% block content %}
-    <div class="container jumbotron userProfileContainer">
-    <h1 class="display-4 text-center">User Profile: {{ page_user }}</h1>
+    <header class="masthead" style="background-image: url(
+            {% block header %}'/static/epicapp/images/slide1.jpg') {% endblock %}">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <div class="  userProfileContainer">
+                            <h1 class="display-4 text-center">User Profile: {{ page_user }}</h1>
+                            <div class="card mb-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-2">
+                                        {% if page_user.profile_pic %}
+                                            <img src="{{ page_user.profile_pic.url }}" class="card-img" alt="...">
 
+                                        {% else %}
+                                            <img src="{% static 'epicapp/images/default.png' %}" class="card-img"
+                                                 alt="...">
+                                        {% endif %}
 
-    <div class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col-md-2">
-                {% if page_user.profile_pic %}
-                    <img src="{{ page_user.profile_pic.url }}" class="card-img" alt="...">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-dark">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h5>
+                                            <p class="small text-muted">
+                                                {% if  page_user.website %}
+                                                    <a href="{{ page_user.website }}" target="_blank">Website |</a>
+                                                {% endif %}
+                                                {% if page_user.github %}
+                                                    <a href="{{ page_user.github }}" target="_blank">Github |</a>
+                                                {% endif %}
+                                                {% if page_user.linkedin %}
+                                                    <a href="{{ page_user.linkedin }}" target="_blank">LinkedIn |</a>
+                                                {% endif %}
+                                                {% if page_user.instagram %}
+                                                    <a href="{{ page_user.instagram }}" target="_blank">Instagram |</a>
+                                                {% endif %}
+                                                {% if page_user.facebook %}
+                                                    <a href="{{ page_user.facebook }}" target="_blank">Facebook |</a>
+                                                {% endif %}
+                                            </p>
+                                            <p class="card-text text-dark"> {{ page_user.bio }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                {% else %}
-                    <img src="{% static 'epicapp/images/default.png' %}" class="card-img" alt="...">
-                {% endif %}
-
-            </div>
-            <div class="col-md-10" style="background-color: black">
-                <div class="card-body">
-                    <h5 class="card-title">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h5>
-                    <p class="small text-muted">
-                        {% if  page_user.website %}
-                            <a href="{{ page_user.website }}" target="_blank">Website |</a>
-                        {% endif %}
-                        {% if page_user.github %}
-                            <a href="{{ page_user.github }}" target="_blank">Github |</a>
-                        {% endif %}
-                        {% if page_user.linkedin %}
-                            <a href="{{ page_user.linkedin }}" target="_blank">LinkedIn |</a>
-                        {% endif %}
-                        {% if page_user.instagram %}
-                            <a href="{{ page_user.instagram }}" target="_blank">Instagram |</a>
-                        {% endif %}
-                        {% if page_user.facebook %}
-                            <a href="{{ page_user.facebook }}" target="_blank">Facebook |</a>
-                        {% endif %}
-                    </p>
-                    <p class="card-text"> {{ page_user.bio }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
+    </header>
 
 {% endblock %}
