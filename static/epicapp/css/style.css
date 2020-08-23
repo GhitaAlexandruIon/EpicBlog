@@ -590,3 +590,12 @@ h2 {
     transition-delay: 0.5s;
     opacity: 1;
 }
+/*Members app*/
+.loginForm{
+    width: 50%;
+    margin: auto;
+}
+.registerForm{
+    width: 80%;
+    margin: auto;
+}
