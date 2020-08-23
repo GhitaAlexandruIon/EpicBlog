@@ -1,18 +1,32 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block title %}
     Edit Profile
 {% endblock %}
 
 {% block content %}
-    <div class="container jumbotron profileSettingsFormContainer">
-    <h1 class="display-4 text-center">Update Pprofile</h1>
-    <h4 class="display-6 text-center">{{ user.profile.bio }}</h4>
-    <div class="form-group profileSettingsForm">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-secondary">Update</button>
-        </form>
-    </div>
-    </div>
+    <header class="masthead" style="background-image: url(
+            {% block header %}'/static/epicapp/images/profile-settings.jpg') {% endblock %}">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <div class="container profileSettingsFormContainer">
+                            <h2 class="display-4 text-center">Update Pprofile</h2>
+                            <h4 class="display-6 text-center">{{ user.profile.bio }}</h4>
+                            <div class="form-group profileSettingsForm text-left">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {% bootstrap_form form %}
+                                    <button class="btn btn-secondary">Update</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 {% endblock %}

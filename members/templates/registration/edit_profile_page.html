@@ -5,21 +5,35 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container jumbotron editProfilePageFormContainer">
-    {% if user.is_authenticated %}
-        {% if user.id == profile.user.id %}
-            <div class="form-group editProfilePageForm">
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
-                    <button class="btn btn-secondary">Update Profile Page</button>
-                </form>
+    <header class="masthead" style="background-image: url(
+            {% block header %}'/static/epicapp/images/edit-profile-page.jpg') {% endblock %}">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                    <h3>Edit Profile Page</h3>
+                        <div class="container editProfilePageFormContainer">
+                            {% if user.is_authenticated %}
+                                {% if user.id == profile.user.id %}
+                                    <div class="form-group editProfilePageForm text-left">
+                                        <form method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            {% bootstrap_form form %}
+                                            <button class="btn btn-secondary">Update Profile Page</button>
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <div class="alert alert-danger" role="alert">
+                                    <h1 class="display-4">You're not allowed here! (and you know it...)</h1>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        {% endif %}
-    {% else %}
-        <div class="alert alert-danger" role="alert">
-                <h1 class="display-4">You're not allowed here! (and you know it...)</h1>
-            </div>
-    {% endif %}
-    </div>
+        </div>
+    </header>
 {% endblock %}
