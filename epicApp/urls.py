@@ -1,5 +1,5 @@
 from django.urls import path
-from epicApp.views import HomeView, PostDetailView, AddPostView, UpdatePostView, \
+from epicApp.views import HomeView, PostDetailView, AddPostView, UpdatePostView, UserPost, \
     DeletePostView, AddCategoryView, category_view, category_list_view, like_view, AddCommentView
 
 urlpatterns = [
@@ -12,7 +12,9 @@ urlpatterns = [
     path('category/<str:cats>/', category_view, name='category'),
     path('category-list/', category_list_view, name='category-list'),
     path('like/<int:pk>', like_view, name='like_post'),
-    path('post/<int:pk>/comment/', AddCommentView.as_view(), name='add_comment')
+    path('post/<int:pk>/comment/', AddCommentView.as_view(), name='add_comment'),
+    path('by/(<username>)', UserPost.as_view(), name='user_posts'),
+
     # path('post/<int:pk>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
     # path('comment/<int:pk>/approve/', views.comment_approve, name='comment_approve'),
     # path('comment/<int:pk>/remove/', views.comment_remove, name='comment_remove'),

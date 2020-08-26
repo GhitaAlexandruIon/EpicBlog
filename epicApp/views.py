@@ -1,9 +1,19 @@
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
+
 from epicApp.forms import PostForm, CommentForm
 from epicApp.models import Post, Category, Comment
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.http import HttpResponseRedirect
+
+
+from django.contrib.auth import get_user_model
+from django.http import Http404
+from django.urls import reverse_lazy
+from django.views import generic
+from django.db.models import Prefetch
+
+User = get_user_model()
 
 
 class HomeView(ListView):
@@ -17,6 +27,30 @@ class HomeView(ListView):
         cat_menu = Category.objects.all()
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         context['cat_menu'] = cat_menu
+        return context
+
+
+class UserPost(generic.ListView):
+    model = Post
+    template_name = '../epicApp/templates/user_post_list.html'
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.post_user = User.objects.all().perfetch_related(Prefetch('post')).get(
+            username__iexact=self.kwargs.get('username'))
+
+    def get_queryset(self):
+        try:
+            self.post_user = User.objects.all().perfetch_related(Prefetch('post')).get(
+                username__iexact=self.kwargs.get('username'))
+        except User.DoesNotExist:
+            raise Http404
+        else:
+            return self.post_user.posts.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_user'] = self.post_user
         return context
 
 
