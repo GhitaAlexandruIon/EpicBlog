@@ -599,3 +599,40 @@ h2 {
     width: 80%;
     margin: auto;
 }
+.title_post{
+    font-family: 'Cinzel', serif;
+    letter-spacing: 3px;
+}
+.sub_title{
+
+    font-family: 'Mirza', cursive;
+    letter-spacing: 2px;
+}
+.lead{
+
+    font-family: 'Mirza', cursive;
+}
+.footer_head{
+    letter-spacing: 3px;
+    margin-top: 0;
+    color: #2b2b2b;
+    transition: ease-in-out;
+}
+.footer_head:hover{
+    color: #175dc3;
+}
+.category__form__heading, .post__form__heading, .add__comment__form_heading,
+.update__post__form__heading, .create__profile__page__form__heading,
+.change__password__form_heading, .edit__profile__form, .edit__profile__page__form,
+.login__form__heading, .registration__form__heading{
+    padding: 100px 0;!important;
+    color: whitesmoke;!important;
+}
+div.registration__form__heading div.container.registerFormContainer div.form-group.registerForm.text-left form ul li,
+form small.form-text.text-muted, div.form-group label, div#id_password.form-control-static strong,
+div#id_password.form-control-static {
+    display: none;
+}
+form small.form-text.text-muted a{
+    overflow: visible;
+}

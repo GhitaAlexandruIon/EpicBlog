@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block title %}
     Register
 {% endblock %}
@@ -10,13 +11,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
-                    <div class="site-heading">
+                    <div class="registration__form__heading">
                         <div class="container  registerFormContainer">
                             <h1 class="display-4 text-center">Register</h1>
                             <div class="form-group registerForm text-left">
                                 <form method="POST">
                                     {% csrf_token %}
-                                    {{ form.as_p }}
+                                    {% bootstrap_form form %}
+{#                                    {{ form.as_p }}#}
                                     <button class="btn btn-secondary">Register</button>
                                 </form>
                             </div>

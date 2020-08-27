@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
 
-                    <p>{{ post.body|safe }}</p>
+                    <p class="lead">{{ post.body|safe }}</p>
                     <div class="container">
 
 
@@ -65,9 +65,11 @@
 
 
                     <div class="container">
+                    <h3 class="post-title">Profile</h3>
                         <div class="row">
-                            <div class=" col-sm-8 col-md-6 auto-max text-center">
-                                <h3 class="display-4">PROFILE</h3>
+
+                            <div class=" col-sm-12 col-md-6 auto-max text-center">
+
                                 <div class="profile-card-wrapper">
 
                                     <div class="profile-card profile-two">
@@ -127,29 +129,30 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-md-6 auto-max">
-                                {#    COMMENTS#}
-                                <h2 class="display-4" style="margin-top: 0">Comments</h2>
-                                {% if not post.comments.all %}
-                                    <h6 class="text-muted">No comments yet</h6>
-                                    <a class="btn btn-primary" href="{% url 'add_comment' post.pk %}">Add comment</a>
-                                {% else %}
-                                    <a class="btn btn-primary" href="{% url 'add_comment' post.pk %}">Add comment</a>
-                                    <br>
-                                    <hr>
-                                    {% for comment in post.comments.all %}
-                                        <h5>{{ comment.name }} | <small>{{ comment.date_added }}</small></h5>
-                                        <p>{{ comment.body }}</p>
-                                        <hr>
-
-                                    {% endfor %}
-                                    {#                                    <a href="{% url 'add_comment' post.pk %}">Add comment</a>#}
-
-                                {% endif %}
+                            <div class="col-sm-12 col-md-6 auto-max">
+                                <h4 class="sub_title">{{ post.author.first_name }} {{ post.author.last_name }}</h4>
+                                <p class="lead">{{ post.author.profile.bio }}</p>
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-12 auto-max">
+                        {#    COMMENTS#}
+                        <h2 class="display-4 text-center" style="margin-top: 0">Comments</h2>
+                        {% if not post.comments.all %}
+                            <h6 class="text-muted">No comments yet</h6>
+                            <a class="btn btn-primary" href="{% url 'add_comment' post.pk %}">Add comment</a>
+                        {% else %}
+                            <a class="btn btn-primary" href="{% url 'add_comment' post.pk %}">Add comment</a>
+                            <br>
+                            <hr>
+                            {% for comment in post.comments.all %}
+                                <h5>{{ comment.name }} | <small>{{ comment.date_added }}</small></h5>
+                                <p>{{ comment.body }}</p>
+                                <hr>
 
+                            {% endfor %}
+                        {% endif %}
+                    </div>
 
                 </div>
             </div>

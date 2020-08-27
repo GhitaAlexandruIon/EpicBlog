@@ -1,44 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{% include 'header.html' %}
+    {% include 'header.html' %}
     {% for post in object_list %}
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="post-preview">
-                        <h1 class="display-4">
-                            <a class="post_title" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
-                        </h1>
-                        <h2 class="display-6">Posted by
+                        <h3 class="title_post">
+                            <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                        </h3>
+                        <small class="sub_title">Posted by
                             <a href="{% url 'show_profile'  post.author.profile.id %}">{{ post.author.first_name }}-{{ post.author.last_name }}</a>
-                            <a class="category" href="{% url 'category' post.category %}">{{ post.category }}</a></h2>
+
+                            <a class="category" href="{% url 'category' post.category %}">{{ post.category }}</a>
+                            <a class="" href="#">
+                                <span class="badge badge-light">{{ post.comments.count }}</span>: comments </a>
+                                <a href="#">
+                                    <span class="badge badge-light">{{ post.total_likes }}</span> like
+                                </a>
+                        </small>
                         <p class="lead">{{ post.snippet }}</p>
-                        <hr class="hr-text" data-content="{{ post.category }}">
-                        {% if user.is_authenticated %}
-                            {% if user.id == post.author.id %}
-                                <a class="btn btn-sm btn-info editButton"
-                                   href="{% url 'update_post' post.pk %}">Edit</a>
-                                <a class="btn btn-sm btn-danger deleteButton"
-                                   href="{% url 'delete_post' post.pk %}">Delete</a>
-                            {% endif %}
-                        {% endif %}
-                        <a class="btn btn-sm btn-primary commentButton" href="{% url 'post_detail' pk=post.pk %}">Comments:
-                            <span class="badge badge-light">{{ post.comments.count }}</span> </a>
-                        {% if liked %}
-                            <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">
-                                UnLike
-                            </button>
-                        {% else %}
-                            <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">
-                                <span class="badge badge-light">{{ post.total_likes }}</span> Like
-                            </button>
-                        {% endif %}
                     </div>
                     <hr>
                 </div>
             </div>
         </div>
     {% endfor %}
-     {% include 'pagination.html' %}
+    {% include 'pagination.html' %}
 {% endblock %}
