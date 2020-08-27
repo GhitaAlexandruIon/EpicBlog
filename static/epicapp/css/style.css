@@ -636,3 +636,6 @@ div#id_password.form-control-static {
 form small.form-text.text-muted a{
     overflow: visible;
 }
+.reaction__count:hover{
+    color:#175dc3;
+}
