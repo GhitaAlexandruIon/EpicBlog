@@ -470,11 +470,6 @@ footer .copyright {
 /**** Social Icons *****/
 
 .social-icons {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
     display: flex;
     list-style: none;
 }
@@ -590,52 +585,202 @@ h2 {
     transition-delay: 0.5s;
     opacity: 1;
 }
+
 /*Members app*/
-.loginForm, .addCateoryForm, .commentForm{
+.loginForm, .addCateoryForm, .commentForm {
     width: 50%;
     margin: auto;
 }
-.registerForm{
+
+.registerForm {
     width: 80%;
     margin: auto;
 }
-.title_post{
+
+.title_post {
     font-family: 'Cinzel', serif;
     letter-spacing: 3px;
 }
-.sub_title{
+
+.sub_title {
 
     font-family: 'Mirza', cursive;
     letter-spacing: 2px;
 }
-.lead{
+
+.lead {
 
     font-family: 'Mirza', cursive;
 }
-.footer_head{
+
+.footer_head {
     letter-spacing: 3px;
     margin-top: 0;
     color: #2b2b2b;
     transition: ease-in-out;
 }
-.footer_head:hover{
+
+.footer_head:hover {
     color: #175dc3;
 }
+
 .category__form__heading, .post__form__heading, .add__comment__form_heading,
 .update__post__form__heading, .create__profile__page__form__heading,
 .change__password__form_heading, .edit__profile__form, .edit__profile__page__form,
-.login__form__heading, .registration__form__heading{
-    padding: 100px 0;!important;
-    color: whitesmoke;!important;
+.login__form__heading, .registration__form__heading {
+    padding: 100px 0;
+!important;
+    color: whitesmoke;
+!important;
 }
+
 div.registration__form__heading div.container.registerFormContainer div.form-group.registerForm.text-left form ul li,
 form small.form-text.text-muted, div.form-group label, div#id_password.form-control-static strong,
 div#id_password.form-control-static {
     display: none;
 }
-form small.form-text.text-muted a{
+
+form small.form-text.text-muted a {
     overflow: visible;
 }
-.reaction__count:hover{
-    color:#175dc3;
+
+.reaction__count:hover {
+    color: #175dc3;
+}
+
+/*social icons*/
+
+
+.social-icon {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 2.5rem;
+    text-decoration: none;
+    -webkit-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+
+.social-icon:hover {
+    color: #fff;
+}
+
+.social-icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translate(-50%, -150%);
+    transform: translate(-50%, -150%);
+}
+
+.social-icon:active {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+.social-icon--linkedin {
+    background: #006599;
+    color: #fff;
+}
+
+.social-icon--linkedin .tooltip {
+    background: #006599;
+    color: currentColor;
+}
+
+.social-icon--linkedin .tooltip:after {
+    border-top-color: #006599;
+}
+
+
+.social-icon--facebook {
+    background: #3b5a9b;
+    color: #fff;
+}
+
+.social-icon--facebook .tooltip {
+    background: #3b5a9b;
+    color: currentColor;
+}
+
+.social-icon--facebook .tooltip:after {
+    border-top-color: #3b5a9b;
+}
+
+.social-icon--instagram {
+    background: #ef5a92;
+    color: #fff;
+}
+
+.social-icon--instagram .tooltip {
+    background: #ef5a92;
+    color: currentColor;
+}
+
+.social-icon--instagram .tooltip:after {
+    border-top-color: #527fa6;
+}
+
+
+
+.social-icon--github {
+    background: #4284c0;
+    color: #fff;
+}
+
+.social-icon--github .tooltip {
+    background: #4284c0;
+    color: currentColor;
+}
+
+.social-icon--github .tooltip:after {
+    border-top-color: #4284c0;
+}
+
+.social-icon i {
+    position: relative;
+    top: 1px;
+}
+
+/* Tooltips */
+.tooltip {
+    display: block;
+    /*position: absolute;*/
+    top: 0;
+    left: 50%;
+    padding: 0.8rem 1rem;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    text-transform: uppercase;
+    -webkit-transform: translate(-50%, -100%);
+    transform: translate(-50%, -100%);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.tooltip:after {
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    content: "";
+    border: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: transparent;
+    -webkit-transform: translate(-50%, 100%);
+    transform: translate(-50%, 100%);
 }
