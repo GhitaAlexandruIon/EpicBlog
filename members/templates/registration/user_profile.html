@@ -8,12 +8,12 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-sm-12 profile_img">
+            <div class="col-md-6 col-sm-12 ">
                 {% if page_user.profile_pic %}
-                    <img src="{{ page_user.profile_pic.url }}" class="" alt="...">
+                    <img src="{{ page_user.profile_pic.url }}" class="profile_img" alt="...">
 
                 {% else %}
-                    <img src="{% static 'epicapp/images/default.png' %}" class=" "
+                    <img src="{% static 'epicapp/images/default.png' %}" class="profile_img "
                          alt="...">
                 {% endif %}
 
@@ -70,5 +70,11 @@
         </div>
     </div>
     <hr>
+{% for user, posts in nested_posts %}
+Posts for the user "{{user}}":
+{% for post in posts %}
+{{ posts.title }}
+{% endfor %}
+{% endfor %}
 
 {% endblock %}

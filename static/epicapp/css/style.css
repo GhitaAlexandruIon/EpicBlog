@@ -784,3 +784,7 @@ form small.form-text.text-muted a {
     -webkit-transform: translate(-50%, 100%);
     transform: translate(-50%, 100%);
 }
+.profile_img{
+    width: 300px;
+    height: 300px;
+}
