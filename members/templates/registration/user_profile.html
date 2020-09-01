@@ -4,77 +4,82 @@
 
 
 {% block content %}
-    <div class="jumbotron text-center" style="background-image: url('/static/epicapp/images/slide1.jpg')">
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 ">
-                {% if page_user.profile_pic %}
-                    <img src="{{ page_user.profile_pic.url }}" class="profile_img" alt="...">
+    {% if profile in page_user %}
+        <div class="jumbotron text-center" style="background-image: url('/static/epicapp/images/slide1.jpg')">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 ">
+                    {% if page_user.profile_pic %}
+                        <img src="{{ page_user.profile_pic.url }}" class="profile_img" alt="...">
 
-                {% else %}
-                    <img src="{% static 'epicapp/images/default.png' %}" class="profile_img "
-                         alt="...">
-                {% endif %}
+                    {% else %}
+                        <img src="{% static 'epicapp/images/default.png' %}" class="profile_img "
+                             alt="...">
+                    {% endif %}
 
-            </div>
-            <div class="col-md-6 col-sm-12 ">
-                <h5 class="card-title text-dark">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h5>
-
-                {% if  page_user.website %}
-                    <p>Personal
-                        <a href="{{ page_user.website }}" target="_blank">Website</a></p>
-
-                {% endif %}
-                <div class="social-icons">
-                    {% if  page_user.website %}
-                        <a class="social-icon social-icon--github"
-                           href="{{ page_user.github }}" target="_blank">
-                            <i class="fab fa-github" style="color: whitesmoke"></i>
-                            <div class="tooltip">Github</div>
-                        </a>
-                    {% endif %}
-                    {% if  page_user.website %}
-                        <a class="social-icon social-icon--instagram"
-                           href="{{ page_user.instagram }}" target="_blank">
-                            <i class="fab fa-instagram" style="color: whitesmoke"></i>
-                            <div class="tooltip">Instagram</div>
-                        </a>
-                    {% endif %}
-                    {% if  page_user.website %}
-                        <a class="social-icon social-icon--linkedin"
-                           href="{{ page_user.linkedin }}" target="_blank">
-                            <i class="fab fa-linkedin" style="color: whitesmoke"></i>
-                            <div class="tooltip">LinkedIn</div>
-                        </a>
-                    {% endif %}
-                    {% if  page_user.website %}
-                        <a class="social-icon social-icon--facebook text-center"
-                           href="{{ page_user.facebook }}" target="_blank">
-                            <i class="fab fa-facebook-f" style="color: whitesmoke"></i>
-                            <div class="tooltip">Facebook</div>
-                        </a>
-                    {% endif %}
                 </div>
+                <div class="col-md-6 col-sm-12 ">
+                    <h5 class="card-title text-dark">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h5>
 
+                    {% if  page_user.website %}
+                        <p>Personal
+                            <a href="{{ page_user.website }}" target="_blank">Website</a></p>
+
+                    {% endif %}
+                    <div class="social-icons">
+                        {% if  page_user.website %}
+                            <a class="social-icon social-icon--github"
+                               href="{{ page_user.github }}" target="_blank">
+                                <i class="fab fa-github" style="color: whitesmoke"></i>
+                                <div class="tooltip">Github</div>
+                            </a>
+                        {% endif %}
+                        {% if  page_user.website %}
+                            <a class="social-icon social-icon--instagram"
+                               href="{{ page_user.instagram }}" target="_blank">
+                                <i class="fab fa-instagram" style="color: whitesmoke"></i>
+                                <div class="tooltip">Instagram</div>
+                            </a>
+                        {% endif %}
+                        {% if  page_user.website %}
+                            <a class="social-icon social-icon--linkedin"
+                               href="{{ page_user.linkedin }}" target="_blank">
+                                <i class="fab fa-linkedin" style="color: whitesmoke"></i>
+                                <div class="tooltip">LinkedIn</div>
+                            </a>
+                        {% endif %}
+                        {% if  page_user.website %}
+                            <a class="social-icon social-icon--facebook text-center"
+                               href="{{ page_user.facebook }}" target="_blank">
+                                <i class="fab fa-facebook-f" style="color: whitesmoke"></i>
+                                <div class="tooltip">Facebook</div>
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-8 col-sm-4">
+
+                    <p class="card-text text-dark"> {{ page_user.bio }}</p>
+                </div>
             </div>
         </div>
+        <hr>
+        {% for user, posts in nested_posts %}
+            Posts for the user "{{ user }}":
+            {% for post in posts %}
+                {{ posts.title }}
+            {% endfor %}
+        {% endfor %}
+        {% else %}
+        <h2 class="text-danger">Yo need to create a profile page</h2>
+    {% endif %}
 
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-8 col-sm-4">
-
-                <p class="card-text text-dark"> {{ page_user.bio }}</p>
-            </div>
-        </div>
-    </div>
-    <hr>
-{% for user, posts in nested_posts %}
-Posts for the user "{{user}}":
-{% for post in posts %}
-{{ posts.title }}
-{% endfor %}
-{% endfor %}
 
 {% endblock %}

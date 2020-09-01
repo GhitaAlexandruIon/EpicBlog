@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import DetailView, CreateView
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 from epicApp.models import Profile
 from .forms import SignUpForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
@@ -34,6 +36,11 @@ def password_success(request):
 
 class ShowProfilePageView(DetailView):
     model = Profile
+    user = User.objects.all()
+    nested_posts = {}
+    for user in user:
+        posts = user.post_set
+        nested_posts[user] = posts
     template_name = 'registration/user_profile.html'
 
     def get_context_data(self, *args, **kwargs):
